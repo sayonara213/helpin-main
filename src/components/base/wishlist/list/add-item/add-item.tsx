@@ -26,7 +26,7 @@ export const WishlistAddItem: React.FC<IWishlistAddItemProps> = ({ wishlistId })
       </Modal>
       <Button
         variant='gradient'
-        gradient={{ from: '#7745e9', to: '#a62bee' }}
+        gradient={{ from: '#418a80', to: '#10b163' }}
         onClick={open}
         fullWidth
       >

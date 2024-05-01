@@ -15,6 +15,8 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { pick } from 'lodash';
+import { Monobank } from '@/components/ui/monobank/monobank';
+import { Divider } from '@mantine/core';
 
 interface IWishlistProps {
   wishlist: TWishlist;
@@ -42,7 +44,10 @@ export const Wishlist: React.FC<IWishlistProps> = async ({
     <WishlistProvider wishlist={wishlist!} isOwn={isOwnWishlist} items={items || []}>
       <main className={styles.container}>
         <NextIntlClientProvider messages={pick(messages, 'WishlistPage', 'Common')}>
-          <WishlistToolbar />
+          <WishlistToolbar>
+            <Monobank url={wishlist.monobank_url} />
+          </WishlistToolbar>
+          <Divider my='md' />
           <WishlistList />
         </NextIntlClientProvider>
       </main>

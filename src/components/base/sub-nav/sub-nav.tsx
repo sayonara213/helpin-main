@@ -5,8 +5,9 @@ import styles from './sub-nav.module.scss';
 
 import { TProfile } from '@/types/database.types';
 import { toNormalCase } from '@/utils/text';
-import { Text } from '@mantine/core';
+import { Button, Text } from '@mantine/core';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 
 interface ISubNavProps {
   profile: TProfile;
@@ -17,10 +18,18 @@ export const SubNav: React.FC<ISubNavProps> = ({ profile }) => {
 
   return (
     <div className={styles.wrapper}>
-      <Text fw={'bold'} size='lg' className={styles.welcome}>
-        {t('title', { name: toNormalCase(profile.full_name) })}
-      </Text>
-      <SubNavLinks profile={profile} />
+      {profile && (
+        <Text fw={'bold'} size='lg' className={styles.welcome}>
+          {t('title', { name: toNormalCase(profile.full_name) })}
+        </Text>
+      )}
+      {profile ? (
+        <SubNavLinks profile={profile} />
+      ) : (
+        <Button component={Link} href={'/auth/sign-up'}>
+          Login
+        </Button>
+      )}
     </div>
   );
 };

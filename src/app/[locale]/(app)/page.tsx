@@ -22,36 +22,17 @@ const App = async () => {
 
   if (!user) return null;
 
-  const wishlistsPromise = supabase
+  const { data } = (await supabase
     .from('wishlists')
     .select()
     .eq('owner_id', user?.id!)
     .eq('is_shared', false)
-    .order('updated_at', { ascending: false }) as never as { data: TWishlist[]; error: Error };
-
-  const sharedWishlistsPromise = supabase.rpc('get_shared_wishlists_with_friends', {
-    current_user_id: user.id,
-  }) as never as { data: ISharedWishlistJoinProfile[]; error: Error };
-
-  const [{ data: wishlists, error }, { data: sharedWishlists, error: sharedError }] =
-    await Promise.all([wishlistsPromise, sharedWishlistsPromise]);
-
-  if (error || sharedError) {
-    return null;
-  }
-
-  const wishlistsList: TWishlistsList = [...wishlists, ...sharedWishlists].sort(
-    (a, b) => +new Date(b.created_at) - +new Date(a.created_at),
-  );
+    .order('updated_at', { ascending: false })) as never as { data: TWishlist[]; error: Error };
 
   return (
     <div className={styles.container}>
       <section className={styles.wishlistWrapper}>
-        <UserWishlists wishlists={wishlistsList} />
-        <Birthdays userId={user.id} />
-      </section>
-      <section className={styles.linksWrapper}>
-        <ShopLinks userId={user?.id!} />
+        <UserWishlists wishlists={data} />
       </section>
     </div>
   );

@@ -43,11 +43,6 @@ const WishlistPage = async ({
         <section className={styles.wishlistWrapper}>
           <Wishlist wishlist={wishlist} isOwnWishlist={isOwn} searchParams={searchParams} />
         </section>
-        {isOwn && (
-          <section className={styles.linkWrapper}>
-            <ShopLinks userId={user?.id!} />
-          </section>
-        )}
       </div>
       <Suspense fallback={<SuggestionsLoading />}>
         <Suggestions wishlistId={wishlist.id} userId={user?.id!} />

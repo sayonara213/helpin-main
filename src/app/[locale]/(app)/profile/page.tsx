@@ -21,6 +21,10 @@ const ProfilePage = async () => {
 
   const { data: profile } = await supabase.from('profiles').select().eq('id', user?.id!).single();
 
+  if (!user) {
+    redirect('/auth/sign-in');
+  }
+
   if (!profile) {
     return;
   }

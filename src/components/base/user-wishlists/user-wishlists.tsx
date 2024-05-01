@@ -12,7 +12,7 @@ import { NextIntlClientProvider, useMessages, useTranslations } from 'next-intl'
 import { pick } from 'lodash';
 
 interface IUserWishlistsProps {
-  wishlists: (TWishlist | ISharedWishlistJoinProfile)[] | null;
+  wishlists: TWishlist[] | null;
 }
 
 export const UserWishlists: React.FC<IUserWishlistsProps> = ({ wishlists }) => {

@@ -1,27 +1,30 @@
 'use client';
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { PropsWithChildren, ReactNode, useCallback, useEffect, useState } from 'react';
 
 import { ToolbarDelete } from './toolbar-delete/toolbar-delete';
 import { ToolbarEdit } from './toolbar-edit/toolbar-edit';
-import { ToolbarLastSeen } from './toolbar-last-seen/last-seen';
 import { ToolbarSort } from './toolbar-sort/toolbar-sort';
 import { ToolbarTitle } from './toolbar-title/toolbar-title';
 import styles from './toolbar.module.scss';
 
-import { useSharedWishlist } from '../../provider/shared-wishlist-provider';
 import { useWishlist } from '../../provider/wishlist-provider';
 
 import { Avatar } from '@/components/ui/avatar/avatar';
 import { Database } from '@/lib/schema';
 import { TProfile } from '@/types/database.types';
 
-import { Skeleton, Text } from '@mantine/core';
+import { Skeleton, Spoiler, Text } from '@mantine/core';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { Paragraph } from '@/components/ui/text/text';
+import { Monobank } from '@/components/ui/monobank/monobank';
 
-export const WishlistToolbar: React.FC = () => {
+interface IWishlistToolbarProps {
+  children: React.ReactNode;
+}
+
+export const WishlistToolbar: React.FC<IWishlistToolbarProps> = ({ children }) => {
   const { isEditing, setIsEditing, isOwnWishlist, wishlist } = useWishlist();
-  const { isFriendOnline } = useSharedWishlist();
 
   const [profile, setProfile] = useState<TProfile | null>(null);
 
@@ -61,7 +64,6 @@ export const WishlistToolbar: React.FC = () => {
         <>
           <Avatar src={profile?.avatar_url} size={36} />
           <Text>{profile.full_name}</Text>
-          <ToolbarLastSeen isOnline={isFriendOnline} />
         </>
       ) : (
         <>
@@ -73,19 +75,35 @@ export const WishlistToolbar: React.FC = () => {
   );
 
   return (
-    <div className={styles.wrapper}>
-      {!wishlist.is_shared && <ToolbarTitle />}
+    <div className={styles.container}>
+      <div className={styles.wrapper}>
+        <ToolbarTitle />
 
-      {!isOwnWishlist ? (
-        <div className={styles.pair}>
-          <RenderProfileSection />
-          {!wishlist.is_shared && <RenderToolbarItems />}
-        </div>
-      ) : (
-        <div className={styles.pair}>
-          <RenderToolbarItems />
-        </div>
-      )}
+        {!isOwnWishlist ? (
+          <div className={styles.pair}>
+            <RenderProfileSection />
+            <RenderToolbarItems />
+          </div>
+        ) : (
+          <div className={styles.pair}>
+            <RenderToolbarItems />
+          </div>
+        )}
+      </div>
+      <div className={styles.bottom}>
+        <Spoiler maxHeight={60} showLabel='Показати більше' hideLabel='Сховати'>
+          <Paragraph color='muted' className={styles.description}>
+            {wishlist.description}
+          </Paragraph>
+        </Spoiler>
+        {wishlist.monobank_url ? (
+          <>{children}</>
+        ) : (
+          <div className={styles.monobank}>
+            <Paragraph color='muted'>Monobank</Paragraph>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

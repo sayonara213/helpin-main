@@ -53,23 +53,13 @@ export const CreateWishlistForm = () => {
   const onSubmit = async (data: IWishlistForm) => {
     setIsLoading(true);
     if (isShared) {
-      if (!data.sharedWith) return;
-
-      const { data: sharedWishlistId, error } = await supabase.rpc('create_shared_wishlist', {
-        shared_title: data.title,
-        user_id_one: user.id,
-        user_id_two: data.sharedWith,
-      });
-      error
-        ? notify('error', commonT('errors.default'))
-        : push(`/shared-wishlist/${sharedWishlistId}`);
     } else {
       const { data: wishlist, error } = await supabase
         .from('wishlists')
         .insert({
           title: data.title,
           description: data.description,
-          is_private: data.isPrivate,
+          monobank_url: data.monobankUrl,
           owner_id: user.id,
         })
         .select()
@@ -103,6 +93,13 @@ export const CreateWishlistForm = () => {
         description={t('description.description')}
         error={translatedErrors['description']}
       ></Textarea>
+      <TextInput
+        {...register('monobankUrl')}
+        placeholder={'https://api.monobank.ua/'}
+        label={'Моно банка'}
+        description={t('title.description')}
+        error={translatedErrors['monobankUrl']}
+      />
       <Switch label={t('shared.label')} onChange={handleIsSharedChange} checked={isShared} />
       <div>
         <AnimatePresence>
@@ -146,9 +143,7 @@ export const CreateWishlistForm = () => {
               initial={'closed'}
               variants={variants}
               key='is-private'
-            >
-              <Switch label={t('private.label')} {...register('isPrivate')} />
-            </motion.div>
+            ></motion.div>
           )}
         </AnimatePresence>
       </div>
