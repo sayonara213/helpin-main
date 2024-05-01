@@ -1,0 +1,34 @@
+.list {
+  flex: 1;
+
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+  background-color: var(--color-foreground);
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--color-border);
+
+  @media screen and (max-width: 1200px) {
+    padding: 10px;
+    flex-direction: row;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  height: 100%;
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    height: auto;
+  }
+}

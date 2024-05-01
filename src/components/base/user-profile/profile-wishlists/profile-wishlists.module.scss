@@ -1,0 +1,22 @@
+.wrapper {
+  padding: 20px;
+  background-color: var(--color-foreground);
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--color-border);
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  p {
+    line-height: 1;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  margin-top: 18px;
+}

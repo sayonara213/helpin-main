@@ -1,0 +1,17 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  text-align: center;
+
+  padding: 20px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-foreground);
+  border: 2px solid var(--color-border);
+}
+
+.avatar {
+  border: 2px solid var(--color-primary);
+}

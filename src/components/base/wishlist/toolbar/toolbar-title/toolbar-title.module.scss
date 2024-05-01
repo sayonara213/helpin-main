@@ -1,0 +1,21 @@
+.wrapper {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.input {
+  all: unset;
+
+  width: 100%;
+
+  font-size: var(--size-large);
+  color: var(--color-text);
+  font-weight: var(--width-medium);
+}
+
+.loading {
+  opacity: 0.7;
+}

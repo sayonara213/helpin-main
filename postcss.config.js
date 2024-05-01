@@ -1,0 +1,3 @@
+module.exports = {
+  plugins: ['autoprefixer', 'postcss-100vh-fix', 'postcss-preset-mantine'],
+};

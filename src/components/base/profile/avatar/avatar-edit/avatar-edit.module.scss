@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.edit {
+  height: 300px;
+  overflow: hidden;
+
+  position: relative;
+}

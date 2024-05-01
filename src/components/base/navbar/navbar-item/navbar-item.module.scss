@@ -1,0 +1,37 @@
+@import '@/styles/mixins';
+
+.item {
+  box-sizing: content-box;
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  border-radius: 8px;
+  background-color: var(--color-primary-light);
+  gap: 8px;
+
+  cursor: pointer;
+  user-select: none;
+
+  height: 24px;
+
+  @media screen and (max-width: 576px) {
+    background-color: transparent;
+
+    p {
+      color: var(--text-color) !important;
+    }
+
+    path {
+      stroke: var(--text-color) !important;
+    }
+  }
+}
+
+.span {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.hover {
+  @include hover-item-accent();
+}

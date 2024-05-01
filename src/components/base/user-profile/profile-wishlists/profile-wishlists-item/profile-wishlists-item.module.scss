@@ -1,0 +1,21 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-foreground);
+  border: 2px solid var(--color-border);
+
+  text-decoration: none;
+
+  transition: var(--transition-duration) var(--transition-timing-function);
+
+  &:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+
+    color: var(--color-white);
+  }
+}

@@ -1,0 +1,26 @@
+.wrapper {
+  background-color: var(--color-foreground) !important;
+  border: 2px solid var(--color-border) !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: inherit !important;
+
+  button {
+    opacity: 1;
+
+    svg {
+      fill: var(--color-text) !important;
+    }
+  }
+
+  div {
+    color: var(--color-text) !important;
+  }
+
+  @media screen and (max-width: 568px) {
+    border-radius: 0 !important;
+  }
+}
+
+.progress {
+  background-color: var(--color-border) !important;
+}

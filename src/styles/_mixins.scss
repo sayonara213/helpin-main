@@ -1,0 +1,41 @@
+@mixin hover-item-primary {
+  transition-property: background-color color;
+  transition: var(--transition-duration) var(--transition-timing-function);
+
+  span,
+  p {
+    transition: color var(--transition-duration) var(--transition-timing-function);
+  }
+
+  &:hover {
+    span,
+    p,
+    button {
+      color: #ffffff;
+    }
+
+    color: #ffffff;
+    background-color: var(--color-primary);
+  }
+}
+
+@mixin hover-item-accent {
+  transition-property: background-color color;
+  transition: var(--transition-duration) var(--transition-timing-function);
+
+  span,
+  p {
+    transition: color var(--transition-duration) var(--transition-timing-function);
+  }
+
+  &:hover {
+    span,
+    p,
+    button {
+      color: #ffffff;
+    }
+
+    color: #ffffff;
+    background-color: var(--color-primary);
+  }
+}

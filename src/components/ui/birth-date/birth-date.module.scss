@@ -1,0 +1,11 @@
+.birthday {
+  display: flex;
+  gap: 6px;
+
+  align-items: center;
+
+  p,
+  span {
+    color: var(--color-text-secondary);
+  }
+}

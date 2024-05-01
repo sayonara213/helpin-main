@@ -1,0 +1,227 @@
+{
+  "AuthPage": {
+    "signIn": {
+      "title": "Sign In",
+      "option": "New to Wishy? Join now"
+    },
+    "signUp": {
+      "title": "Sign Up",
+      "option": "Already have an account? Sign in"
+    },
+    "fields": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "providers": {
+      "label": "Sign in with",
+      "divider": "OR"
+    },
+    "AuthAdditional": {
+      "title": "One more step...",
+      "sub": "Let others know more about you!",
+      "fields": {
+        "name": {
+          "label": "Full Name",
+          "description": "Set your full name to let others know who you are"
+        },
+        "birthday": {
+          "label": "Date of Birth",
+          "description": "Let your friends know when to buy you a gift"
+        },
+        "buttons": {
+          "submit": "Finish",
+          "back": "Back"
+        }
+      }
+    }
+  },
+  "HomePage": {
+    "wishlists": {
+      "title": "My Wishlists"
+    },
+    "create": {
+      "title": "Create a Wishlist",
+      "form": {
+        "title": {
+          "label": "Title",
+          "description": "Give your wishlist a title"
+        },
+        "description": {
+          "label": "Description",
+          "description": "Give your wishlist a description"
+        },
+        "shared": {
+          "label": "Is Shared",
+          "action": "Select friend",
+          "description": "Select a friend to share your wishlist with",
+          "placeholder": "Select a friend",
+          "selected": "Shared with:"
+        },
+        "private": {
+          "label": "Is Private"
+        },
+        "submit": {
+          "label": "Create"
+        }
+      }
+    },
+    "birthdays": {
+      "title": "Birthdays",
+      "tooltip": "'s birthday"
+    },
+    "shops": {
+      "title": "Shops",
+      "add": "Add",
+      "modal": {
+        "title": "Save link",
+        "submit": "Save"
+      }
+    },
+    "subNav": {
+      "title": "Welcome back, {name}!"
+    }
+  },
+  "Navigation": {
+    "home": "Home",
+    "profile": "Profile",
+    "friends": "Friends",
+    "notifications": "Notifications",
+    "signOut": "Sign Out",
+    "localeSwitch": "Switch language",
+    "themeSwitch": "Switch theme",
+    "users": {
+      "options": {
+        "friends": "Friends",
+        "users": "Users"
+      },
+      "field": {
+        "label": "Search for users",
+        "pull": "Pull to refresh"
+      }
+    }
+  },
+  "ProfilePage": {
+    "fields": {
+      "name": {
+        "label": "Full Name",
+        "description": "Set your full name to let others know who you are"
+      },
+      "userName": {
+        "label": "User name",
+        "description": "Set your user name to let others find you easily",
+        "errorTaken": "User name is already taken"
+      },
+      "bio": {
+        "label": "Bio",
+        "description": "Any details about you, that you want to share with others"
+      },
+      "buttons": {
+        "submit": "Save",
+        "logOut": "Log out"
+      }
+    }
+  },
+  "NotificationsPage": {
+    "title": "Notifications",
+    "empty": "You don't have any notifications now",
+    "item": {
+      "friend": {
+        "title": "You have a new friend request",
+        "body": "{name} wants to be your friend"
+      }
+    }
+  },
+  "WishlistPage": {
+    "toolbar": {
+      "delete": {
+        "title": "Delete wishlist",
+        "body": "Are you sure you want to delete this wishlist?",
+        "cancel": "Cancel",
+        "delete": "Delete"
+      },
+      "sort": {
+        "sortBy": {
+          "title": "Sort by",
+          "priority": "Priority",
+          "price": "Price",
+          "name": "Name",
+          "date": "Date added"
+        },
+        "sortOrder": {
+          "title": "Sort order",
+          "asc": "Ascending",
+          "desc": "Descending"
+        }
+      },
+      "user": {
+        "online": "User is currently viewing this page",
+        "offline": "User is offline"
+      }
+    },
+    "add": {
+      "title": "Make a wish!",
+      "form": {
+        "title": "Add new wish",
+        "fields": {
+          "name": {
+            "label": "Name",
+            "description": "Give your wish a name"
+          },
+          "description": {
+            "label": "Description",
+            "description": "Here you can add some description of the item, let others know why you want it"
+          },
+          "price": {
+            "label": "Price",
+            "description": "How much does it cost? (in USD)"
+          },
+          "link": {
+            "label": "Link",
+            "description": "Add a link to the item, so others can buy it for you"
+          },
+          "image": {
+            "label": "Image",
+            "description": "Wishy will try to set image automatically when you add a link",
+            "action": "Select image"
+          },
+          "save": {
+            "label": "Make a wish!"
+          }
+        }
+      }
+    },
+    "item": {
+      "delete": {
+        "title": "Delete wish",
+        "description": "Are you sure you want to delete this wish?"
+      }
+    },
+    "suggestions": {
+      "title": "AI Suggestions",
+      "accuracy": "ACCUARCY",
+      "add": "Generate suggestion"
+    }
+  },
+  "Common": {
+    "validation": {
+      "required": "This field is required",
+      "max": "Field should be less than {max} characters",
+      "min": "Field should be more than {min} characters",
+      "email": "Enter a valid email address",
+      "password": "Password should be at least 6 characters long",
+      "url": "Enter a valid URL"
+    },
+    "errors": {
+      "default": "Something went wrong, pleasy try again later",
+      "auth": {
+        "invalidCredentials": "Wrong email or password",
+        "emailTaken": "Email is already taken"
+      }
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "confirm": "Confirm"
+    }
+  }
+}

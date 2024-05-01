@@ -1,0 +1,48 @@
+.wrapper {
+  height: 186px;
+  overflow-y: scroll;
+  padding-right: 8px;
+
+  a {
+    text-decoration: none;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-border-secondary);
+    border-radius: var(--radius-sm);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--color-border);
+    border-radius: var(--radius-sm);
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: var(--color-background);
+  }
+}
+
+.button {
+  margin-bottom: 4px;
+}
+
+.errors {
+  width: 100%;
+  display: flex;
+  padding: 8px;
+
+  text-align: center;
+
+  p {
+    width: 100%;
+  }
+}
+
+.loader {
+  padding: 6px;
+}

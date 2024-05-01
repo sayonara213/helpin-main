@@ -1,0 +1,72 @@
+@import '@/styles/mixins';
+
+.link {
+  cursor: pointer;
+  user-select: none;
+  min-width: 80px;
+  aspect-ratio: 1/1;
+  padding: 6px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: 12px;
+
+  position: relative;
+  text-decoration: none;
+
+  background-color: var(--color-foreground);
+  border: 2px solid var(--color-border);
+
+  @include hover-item-primary();
+}
+
+.wrapper {
+  position: relative;
+
+  &:hover {
+    .delete {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .delete {
+      opacity: 1;
+    }
+  }
+}
+
+.delete {
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  top: -5px;
+  right: -5px;
+  padding: 6px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-border);
+  background-color: var(--color-foreground);
+
+  z-index: 10;
+  cursor: pointer;
+
+  opacity: 0;
+
+  transition: all var(--transition-duration) var(--transition-timing-function);
+
+  &:hover {
+    background-color: var(--color-primary);
+
+    path {
+      transition: all var(--transition-duration) var(--transition-timing-function);
+
+      stroke: var(--color-foreground);
+    }
+  }
+}

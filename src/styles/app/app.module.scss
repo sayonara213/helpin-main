@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+
+  flex: 1;
+  height: 100%;
+  gap: 20px;
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.wrapper {
+  padding: 20px;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-smooth);
+}
+
+.linksWrapper {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.wishlistWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sharedWishlistContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  gap: 20px;
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.sharedWishlistWrapper {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+    gap: 24px;
+  }
+}

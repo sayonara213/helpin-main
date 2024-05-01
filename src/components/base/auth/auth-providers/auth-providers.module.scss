@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+
+  .divider {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: '';
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 1px;
+      background-color: var(--color-border);
+    }
+
+    span {
+      padding: 0 12px;
+      background-color: var(--color-foreground);
+      color: var(--color-text-muted);
+      font-size: var(--size-small);
+
+      z-index: 2;
+    }
+  }
+}

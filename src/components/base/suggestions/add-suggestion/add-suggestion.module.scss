@@ -1,0 +1,23 @@
+.wrapper {
+  position: relative;
+
+  flex: 1;
+
+  padding: 20px;
+  background-color: var(--color-foreground);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  cursor: pointer;
+
+  transition: background-color var(--transition-duration) var(--transition-timing-function);
+
+  &:hover {
+    background-color: var(--color-background);
+  }
+}

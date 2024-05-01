@@ -1,0 +1,67 @@
+:root {
+  --color-primary: #7745e9; //222327
+  --color-primary-light: #9873ee;
+  --color-primary-dark: #571be0;
+
+  --color-foreground: #fbfafd;
+  --color-background: #faf0ff;
+
+  --color-dark-transparent: rgba(81, 45, 211, 0.5);
+
+  --color-accent: #7e7bd9;
+  --color-accent-light: #b3baee;
+  --color-accent-dark: #5e50b2;
+  --color-accent-muted: #2b283c;
+  --color-accent-muted-dark: #1e1c2a;
+
+  --color-border: #dcd4ea;
+  --color-border-secondary: #a384e1;
+
+  --text-color: #231934;
+  --color-text-secondary: #5d428a;
+  --color-text-muted: #8264b4;
+
+  --bg-blur: url('/dark-bg.svg');
+
+  --width-bold: 900;
+  --width-medium: 600;
+  --width-regular: 400;
+
+  --size-small: 14px;
+  --size-normal: 16px;
+  --size-medium: 20px;
+  --size-big: 24px;
+  --size-large: 28px;
+  --size-title: 52px;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --transition-duration: 150ms;
+  --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --shadow-smooth: rgba(100, 100, 100, 0.2) 0px 5px 12px 0px;
+}
+
+[data-mantine-color-scheme='dark'] {
+  --color-primary: #7745e9; //222327
+  --color-primary-light: #9873ee;
+  --color-primary-dark: #571be0;
+
+  --color-foreground: #211934;
+  --color-background: #171122;
+
+  --color-dark-transparent: rgba(17, 9, 27, 0.6);
+
+  --color-border: #372956;
+  --color-border-secondary: #a384e1;
+
+  --text-color: #ffffff;
+  --color-text-muted: #9a87c5;
+  --color-text-secondary: #9873ee;
+
+  --shadow-smooth: rgba(0, 0, 0, 0.2) 0px 5px 12px 0px;
+}
