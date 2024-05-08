@@ -30,11 +30,25 @@ export const Suggestions: React.FC<ISuggestionsProps> = async ({ wishlistId, use
     .eq('wishlist_id', wishlistId)
     .eq('created_by', userId);
 
+  const { data: wishlist, error: wishlistError } = await supabase
+    .from('wishlists')
+    .select()
+    .eq('id', wishlistId)
+    .single();
+
+  if (!wishlist) return;
+
   return (
     <div className={styles.wrapper}>
       <Text lh={'xs'}>{t('title')}</Text>
       <NextIntlClientProvider messages={pick(messages, 'WishlistPage.suggestions', 'Common')}>
-        <SuggestionsList wishlistId={wishlistId} userId={userId} suggestions={suggestions} />
+        <SuggestionsList
+          wishlistId={wishlistId}
+          userId={userId}
+          suggestions={suggestions}
+          title={wishlist?.title}
+          description={wishlist?.description}
+        />
       </NextIntlClientProvider>
     </div>
   );

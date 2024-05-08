@@ -25,6 +25,8 @@ interface IWishlistContext {
   orderChanged: boolean;
   setOrderChanged: (orderChanged: boolean) => void;
   reorder: (items: TWishlistItem[]) => void;
+  isChat: boolean;
+  setIsChat: (isChat: boolean) => void;
 }
 
 const initialWishlist: IWishlistContext = {
@@ -50,6 +52,8 @@ const initialWishlist: IWishlistContext = {
   orderChanged: false,
   setOrderChanged: () => {},
   reorder: () => {},
+  isChat: false,
+  setIsChat: () => {},
 };
 
 const WishlistContext = createContext<IWishlistContext>(initialWishlist);
@@ -64,6 +68,7 @@ export const WishlistProvider: React.FC<IWishlistProviderProps> = ({
   const [wishlistItems, setWishlistItems] = useState<TWishlistItem[]>(items);
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [orderChanged, setOrderChanged] = useState<boolean>(false);
+  const [isChat, setIsChat] = useState<boolean>(false);
 
   const addItem = (item: TWishlistItem) => {
     const newItems = [...wishlistItems, { ...item, priority: items.length }];
@@ -109,6 +114,8 @@ export const WishlistProvider: React.FC<IWishlistProviderProps> = ({
         orderChanged,
         setOrderChanged,
         reorder,
+        isChat,
+        setIsChat,
       }}
     >
       {children}

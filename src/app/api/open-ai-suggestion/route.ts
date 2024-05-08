@@ -12,11 +12,13 @@ interface OpenAiSuggestionRequest {
   userId: string;
   suggestion?: TSuggestion;
   locale?: string;
+  description?: string;
+  title?: string;
 }
 
 interface ISuggestion {
-  suggestedGiftName: string;
-  suggestedGiftDescription: string;
+  suggestedName: string;
+  suggestedDescription: string;
   confidenceScore: number;
 }
 
@@ -32,26 +34,11 @@ const openai = new OpenAI({
 });
 
 export async function POST(req: NextRequest) {
-  const { wishlistId, userId, suggestion, locale } = (await req.json()) as OpenAiSuggestionRequest;
+  const { wishlistId, userId, suggestion, description, title } =
+    (await req.json()) as OpenAiSuggestionRequest;
 
   if (!wishlistId || !userId) {
     return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
-  }
-
-  const { data: wishlist, error } = await supabase
-    .from('wishlists')
-    .select(
-      `
-          *,
-          items (id, name),
-          profiles (id, full_name, date_of_birth)
-      `,
-    )
-    .eq('id', wishlistId)
-    .single();
-
-  if (error) {
-    return NextResponse.json({ error: error }, { status: 500 });
   }
 
   const { data: suggestions, error: suggestionsError } = await supabase
@@ -60,27 +47,22 @@ export async function POST(req: NextRequest) {
     .eq('wishlist_id', wishlistId)
     .eq('created_by', userId);
 
-  const itemNames =
-    wishlist.items && wishlist.items.map((item, index) => index < 3 && item.name).join(', ');
-  const suggestionNames = suggestions?.map((item) => item.name).join(', ');
-  const age = new Date().getFullYear() - new Date(wishlist.profiles!.date_of_birth).getFullYear();
-
   const aiCompletion = await openai.chat.completions.create({
     model: 'gpt-3.5-turbo-0125',
     response_format: { type: 'json_object' },
     messages: [
       {
         role: 'system',
-        content: `Generate a JSON response with gift suggestions based on a user's wishlist, 
-        age, and current trends. The JSON should be one object with fields for 'suggestedGiftName', 
-        'suggestedGiftDescription (no more than 150 characters)', and 'confidenceScore' (0-1). Suggestion should be for real, 
-        purchasable product that is popular in ${new Date().getFullYear()}. Avoid abstract ideas and ensure 
-        the gift is suitable and appealing to someone who is ${age} years old. The response should be 
-        in ${locale === 'uk' ? 'Ukrainian' : 'English'}. Do not suggest: ${suggestionNames} or similar items.`,
+        content: `Generate a JSON response with supporting items for suggestions based on a existing volunteering list of needs, 
+        , and current situation in the world. The JSON should be one object with fields for 'suggestedName', 
+        'suggestedDescription (no more than 150 characters)', and 'confidenceScore' (0-1). Suggestion should be for real, 
+        purchasable product that is acually needed regarding to the description: ${description}; and title: ${title} in ${new Date().getFullYear()}. Avoid abstract ideas and ensure 
+        the item is needed.`,
       },
       {
         role: 'user',
-        content: `I'm looking for gift ideas for my friend who is ${age} years old. Their wishlist includes ${itemNames}. I want something that's in demand right now and would be really appreciated.`,
+        content: `I'm looking for volunteer items ideas for list. Suggestion should be for real, 
+        purchasable product that is acually needed regarding to the description.`,
       },
     ],
   });
@@ -99,8 +81,8 @@ export async function POST(req: NextRequest) {
         .update({
           confidence_score: aiSuggestion.confidenceScore,
           reason: '',
-          description: aiSuggestion.suggestedGiftDescription,
-          name: aiSuggestion.suggestedGiftName,
+          description: aiSuggestion.suggestedDescription,
+          name: aiSuggestion.suggestedName,
           wishlist_id: wishlistId,
           created_by: userId,
         })
@@ -112,8 +94,8 @@ export async function POST(req: NextRequest) {
         .insert({
           confidence_score: aiSuggestion.confidenceScore,
           reason: '',
-          description: aiSuggestion.suggestedGiftDescription,
-          name: aiSuggestion.suggestedGiftName,
+          description: aiSuggestion.suggestedDescription,
+          name: aiSuggestion.suggestedName,
           wishlist_id: wishlistId,
           created_by: userId,
         })

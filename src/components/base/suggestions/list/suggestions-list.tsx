@@ -15,12 +15,16 @@ interface ISuggestionsListProps {
   suggestions: TSuggestion[] | null;
   wishlistId: number;
   userId: string;
+  description: string | null;
+  title: string;
 }
 
 export const SuggestionsList: React.FC<ISuggestionsListProps> = ({
   suggestions,
   wishlistId,
   userId,
+  description,
+  title,
 }) => {
   const [suggestionsState, setSuggestionsState] = useState<TSuggestion[]>(suggestions || []);
 
@@ -31,7 +35,14 @@ export const SuggestionsList: React.FC<ISuggestionsListProps> = ({
     try {
       const data = await fetch('/api/open-ai-suggestion', {
         method: 'POST',
-        body: JSON.stringify({ wishlistId, userId, suggestions: suggestionsState, locale }),
+        body: JSON.stringify({
+          wishlistId,
+          userId,
+          suggestions: suggestionsState,
+          locale,
+          description: description,
+          title: title,
+        }),
       });
 
       const { suggestion } = await data.json();
@@ -50,8 +61,10 @@ export const SuggestionsList: React.FC<ISuggestionsListProps> = ({
           wishlistId,
           userId,
           suggestion,
-          uggestions: suggestionsState,
+          suggestions: suggestionsState,
           locale,
+          description: description,
+          title: title,
         }),
       });
 

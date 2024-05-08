@@ -83,6 +83,54 @@ export type Database = {
         };
         Relationships: [];
       };
+      suggestions: {
+        Row: {
+          confidence_score: number;
+          created_at: string;
+          created_by: string;
+          description: string;
+          id: string;
+          name: string;
+          reason: string;
+          wishlist_id: number;
+        };
+        Insert: {
+          confidence_score?: number;
+          created_at?: string;
+          created_by: string;
+          description?: string;
+          id?: string;
+          name?: string;
+          reason?: string;
+          wishlist_id: number;
+        };
+        Update: {
+          confidence_score?: number;
+          created_at?: string;
+          created_by?: string;
+          description?: string;
+          id?: string;
+          name?: string;
+          reason?: string;
+          wishlist_id?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'suggestions_created_by_fkey';
+            columns: ['created_by'];
+            isOneToOne: false;
+            referencedRelation: 'profiles';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'suggestions_wishlist_id_fkey';
+            columns: ['wishlist_id'];
+            isOneToOne: false;
+            referencedRelation: 'wishlists';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
       wishlists: {
         Row: {
           bg_image: string | null;
