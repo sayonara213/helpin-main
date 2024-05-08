@@ -65,4 +65,5 @@ export const wishlistSchema = yup.object({
   sharedWith: yup.string().optional(),
   monobankUrl: yup.string().url().optional(),
   bgImage: yup.string().optional(),
+  location: yup.string().optional(),
 });

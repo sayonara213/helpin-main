@@ -1,6 +1,6 @@
 'use server';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import styles from './monobank.module.scss';
 import { Divider, Image, Progress } from '@mantine/core';
@@ -15,8 +15,6 @@ export const Monobank: React.FC<IMonobankProps> = async ({ url }) => {
   if (!url) {
     return null;
   }
-
-  const id = url.split('/').pop();
 
   const response = await fetch(
     `https://api.monobank.ua/bank/jar/4myaFGuX77n4Y9SwswSbacoBozgbDJSL`,
@@ -33,32 +31,28 @@ export const Monobank: React.FC<IMonobankProps> = async ({ url }) => {
     },
   );
 
-  const data = await response.json();
+  const { amount, goal, ownerIcon, title, jarId } = await response.json();
 
-  if (!data) {
-    return null;
-  }
-
-  const percentage = (data.amount / data.goal) * 100;
+  const percentage = (amount / goal) * 100;
 
   return (
-    <Link href={`https://send.monobank.ua/jar/${data.jarId}`} style={{ textDecoration: 'none' }}>
+    <Link href={`https://send.monobank.ua/jar/${jarId}`} style={{ textDecoration: 'none' }}>
       <div className={styles.container}>
-        <Image src={data.ownerIcon} w={64} radius={'md'} />
+        <Image src={ownerIcon} w={64} radius={'md'} />
         <Divider orientation='vertical' />
         <div className={styles.wrapper}>
           <div className={styles.texts}>
-            <Paragraph>{data.title}</Paragraph>
+            <Paragraph>{title}</Paragraph>
             <div className={styles.prices}>
               <Paragraph color='muted' size='sm'>
-                Зібрано: {data.amount / 100} грн
+                Зібрано: {amount / 100} грн
               </Paragraph>
               <Paragraph color='muted' size='sm'>
-                Ціль: {data.goal / 100} грн
+                Ціль: {goal / 100} грн
               </Paragraph>
             </div>
           </div>
-          <Progress value={percentage} striped />
+          <Progress color='green' value={percentage} striped />
         </div>
       </div>
     </Link>

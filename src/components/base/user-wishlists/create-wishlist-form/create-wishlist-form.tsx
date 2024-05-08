@@ -61,6 +61,7 @@ export const CreateWishlistForm = () => {
           description: data.description,
           monobank_url: data.monobankUrl,
           owner_id: user.id,
+          location: data.location,
         })
         .select()
         .single();
@@ -98,6 +99,13 @@ export const CreateWishlistForm = () => {
         placeholder={'https://api.monobank.ua/'}
         label={'Моно банка'}
         description={t('title.description')}
+        error={translatedErrors['monobankUrl']}
+      />
+      <TextInput
+        {...register('location')}
+        placeholder={'м. Львів'}
+        label={'Локація'}
+        description={'Місце збору'}
         error={translatedErrors['monobankUrl']}
       />
       <Switch label={t('shared.label')} onChange={handleIsSharedChange} checked={isShared} />

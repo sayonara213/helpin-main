@@ -33,4 +33,5 @@ export interface IWishlistForm {
   sharedWith?: string;
   monobankUrl?: string;
   bgImage?: string;
+  location?: string;
 }

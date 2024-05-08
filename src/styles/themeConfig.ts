@@ -2,7 +2,7 @@ import { MantineThemeOverride } from '@mantine/core';
 
 export const themeMantine: MantineThemeOverride = {
   primaryColor: 'accent',
-  primaryShade: { light: 6, dark: 8 },
+  primaryShade: { light: 6, dark: 6 },
   colors: {
     accent: [
       '#f4f3ff',

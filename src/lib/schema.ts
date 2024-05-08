@@ -58,6 +58,7 @@ export type Database = {
           full_name: string;
           id: string;
           is_verified: boolean;
+          is_volunteer: boolean;
           user_name: string | null;
         };
         Insert: {
@@ -67,6 +68,7 @@ export type Database = {
           full_name?: string;
           id: string;
           is_verified?: boolean;
+          is_volunteer?: boolean;
           user_name?: string | null;
         };
         Update: {
@@ -76,6 +78,7 @@ export type Database = {
           full_name?: string;
           id?: string;
           is_verified?: boolean;
+          is_volunteer?: boolean;
           user_name?: string | null;
         };
         Relationships: [];
@@ -87,6 +90,7 @@ export type Database = {
           description: string | null;
           id: number;
           joint_with: string | null;
+          location: string | null;
           monobank_url: string | null;
           owner_id: string;
           title: string;
@@ -98,6 +102,7 @@ export type Database = {
           description?: string | null;
           id?: number;
           joint_with?: string | null;
+          location?: string | null;
           monobank_url?: string | null;
           owner_id: string;
           title?: string;
@@ -109,6 +114,7 @@ export type Database = {
           description?: string | null;
           id?: number;
           joint_with?: string | null;
+          location?: string | null;
           monobank_url?: string | null;
           owner_id?: string;
           title?: string;

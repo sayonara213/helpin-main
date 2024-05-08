@@ -101,6 +101,7 @@
     }
   },
   "ProfilePage": {
+    "volunteer": "Volunteer",
     "fields": {
       "name": {
         "label": "Full Name",
