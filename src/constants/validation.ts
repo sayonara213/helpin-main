@@ -61,7 +61,9 @@ export const wishlistItemSchema = yup.object({
 
 export const wishlistSchema = yup.object({
   title: yup.string().required().min(3).max(15),
-  isPrivate: yup.boolean().required(),
   description: yup.string().optional(),
   sharedWith: yup.string().optional(),
+  monobankUrl: yup.string().url().optional(),
+  bgImage: yup.string().optional(),
+  location: yup.string().optional(),
 });

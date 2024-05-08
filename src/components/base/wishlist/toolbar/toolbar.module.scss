@@ -1,3 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  .description {
+    line-height: 1.2;
+
+    @media screen and (max-width: 992px) {
+      font-size: var(--size-small) !important;
+    }
+
+    @media screen and (max-width: 768px) {
+      max-width: 100%;
+    }
+  }
+}
+
 .wrapper {
   width: 100%;
   min-height: 36px;

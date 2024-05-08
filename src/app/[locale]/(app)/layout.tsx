@@ -24,11 +24,7 @@ const AppLayout = async ({ children }: { children: React.ReactNode }) => {
 
   const { data: profile } = await supabase.from('profiles').select().eq('id', user?.id!).single();
 
-  if (!user) {
-    redirect('/auth/sign-in');
-  }
-
-  if (!profile) {
+  if (user && !profile) {
     redirect('/auth/one-more-step');
   }
 

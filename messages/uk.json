@@ -18,7 +18,7 @@
     },
     "AuthAdditional": {
       "title": "Ще один крок...",
-      "sub": "Дай іншим знати трішки більше про себе!",
+      "sub": "Допоможи користувачам довіритись тобі!",
       "fields": {
         "name": {
           "label": "Повне ім'я",
@@ -37,18 +37,18 @@
   },
   "HomePage": {
     "wishlists": {
-      "title": "Мої Вішлисти"
+      "title": "Мої Збори"
     },
     "create": {
-      "title": "Створити вішлист",
+      "title": "Новий збір",
       "form": {
         "title": {
           "label": "Назва",
-          "description": "Дай своєму вішлисту назву"
+          "description": "Назва збору"
         },
         "description": {
           "label": "Опис",
-          "description": "Коротко опиши цей вішлист"
+          "description": "Коротко опиши цей збір"
         },
         "shared": {
           "label": "Спільний з другом",
@@ -101,6 +101,7 @@
     }
   },
   "ProfilePage": {
+    "volunteer": "Волонтер",
     "fields": {
       "name": {
         "label": "Повне ім'я",

@@ -29,7 +29,9 @@ export interface IProfileForm {
 
 export interface IWishlistForm {
   title: string;
-  isPrivate: boolean;
   description?: string;
   sharedWith?: string;
+  monobankUrl?: string;
+  bgImage?: string;
+  location?: string;
 }
