@@ -4,14 +4,9 @@ import { cookies } from 'next/headers';
 
 import { Database } from '@/lib/schema';
 import styles from '@/styles/app/app.module.scss';
-import { ISharedWishlistJoinProfile, TWishlist } from '@/types/database.types';
 
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { RecomendedDonations } from '@/components/base/recomended-donations/recomended-donations';
-import { DonationsPagination } from '@/components/base/recomended-donations/pagination/pagination';
-import { UserWishlists } from '@/components/base/user-wishlists/user-wishlists';
-
-type TWishlistsList = (TWishlist | ISharedWishlistJoinProfile)[];
 
 interface IAppProps {
   params?: {
@@ -48,8 +43,6 @@ const App = async ({ searchParams }: IAppProps) => {
     )
     .order('updated_at', { ascending: false })
     .range((currentPage - 1) * 6, currentPage * 6 - 1);
-
-  console.log(donations, count, error);
 
   const pages = Math.ceil(count! / 6);
 
