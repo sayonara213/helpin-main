@@ -20,16 +20,17 @@ import '@mantine/notifications/styles.css';
 const inter = Exo_2({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  applicationName: 'Wishy',
+  applicationName: 'Helpin',
   title: {
-    default: 'Wishy',
-    template: '%s | Wishy',
+    default: 'Helpin',
+    template: '%s | Helpin',
   },
-  description: 'Wishy is a social wishlist app',
+  description:
+    'Helpin is a volunteer platform that connects people in need with those who want to help.',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'Wishy',
+    title: 'Helpin',
   },
   formatDetection: {
     telephone: false,
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: '#7745e9',
+  themeColor: '#4e9678',
   initialScale: 1,
   maximumScale: 1,
 };

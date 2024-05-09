@@ -1,9 +1,23 @@
-.wrapper {
+.container {
   display: flex;
   flex: 1;
 
   flex-direction: column;
   gap: 12px;
+}
+
+.wrapper {
+  display: flex;
+
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+  justify-content: space-between;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
 }
 
 .list {

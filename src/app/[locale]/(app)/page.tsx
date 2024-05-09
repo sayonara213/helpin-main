@@ -56,8 +56,7 @@ const App = async ({ searchParams }: IAppProps) => {
   return (
     <div className={styles.container}>
       <section className={styles.wishlistWrapper}>
-        <RecomendedDonations donations={donations} />
-        <DonationsPagination totalPages={pages} />
+        <RecomendedDonations donations={donations} totalPages={pages} />
       </section>
     </div>
   );

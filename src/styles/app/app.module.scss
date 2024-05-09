@@ -32,6 +32,10 @@
   flex-direction: column;
   gap: 12px;
   width: 100%;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
 }
 
 .sharedWishlistContainer {
