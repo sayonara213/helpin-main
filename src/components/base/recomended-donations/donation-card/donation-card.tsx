@@ -9,6 +9,7 @@ import { Avatar } from '@/components/ui/avatar/avatar';
 import { Monobank } from '@/components/ui/monobank/monobank';
 import { cookies } from 'next/headers';
 import { IconCalendar, IconMapPin } from '@tabler/icons-react';
+import { ProfileTooltip } from '../../profile-tooltip/profile-tooltip';
 
 interface IDontaionCardProps {
   donation: TWishlist;
@@ -30,18 +31,20 @@ export const DontaionCard: React.FC<IDontaionCardProps> = async ({ donation }) =
       <CardSection>
         <Group justify='space-between' bg={'var(--color-background)'} p='xs'>
           <Link href={`/user/${volunteer.id}`} style={{ textDecoration: 'none' }}>
-            <Group gap={12}>
-              <Avatar src={volunteer?.avatar_url} size={38} />
-              <Flex direction={'column'}>
-                <Text fw={500}>{volunteer?.full_name}</Text>
-                <Flex gap={4}>
-                  <IconMapPin color='var(--color-text-secondary)' size={20} />
-                  <Text size='sm' c='dimmed'>
-                    {donation.location}
-                  </Text>
+            <ProfileTooltip profileId={volunteer.id}>
+              <Group gap={12}>
+                <Avatar src={volunteer?.avatar_url} size={38} />
+                <Flex direction={'column'}>
+                  <Text fw={500}>{volunteer?.full_name}</Text>
+                  <Flex gap={4}>
+                    <IconMapPin color='var(--color-text-secondary)' size={20} />
+                    <Text size='sm' c='dimmed'>
+                      {donation.location}
+                    </Text>
+                  </Flex>
                 </Flex>
-              </Flex>
-            </Group>
+              </Group>
+            </ProfileTooltip>
           </Link>
 
           <Badge color='pink'>{new Date(donation.created_at).toLocaleDateString()}</Badge>

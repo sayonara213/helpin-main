@@ -18,6 +18,7 @@ import { Skeleton, Spoiler, Text } from '@mantine/core';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { Paragraph } from '@/components/ui/text/text';
 import { Monobank } from '@/components/ui/monobank/monobank';
+import { ToolbarChat } from './toolbar-chat/toolbar-chat';
 
 interface IWishlistToolbarProps {
   children: React.ReactNode;
@@ -55,6 +56,7 @@ export const WishlistToolbar: React.FC<IWishlistToolbarProps> = ({ children }) =
       <ToolbarSort />
       {isOwnWishlist && <ToolbarEdit isEditing={isEditing} setIsEditing={setIsEditing} />}
       {isOwnWishlist && <ToolbarDelete />}
+      <ToolbarChat />
     </>
   );
 

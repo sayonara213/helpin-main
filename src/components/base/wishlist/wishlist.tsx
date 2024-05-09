@@ -17,6 +17,9 @@ import { getMessages } from 'next-intl/server';
 import { pick } from 'lodash';
 import { Monobank } from '@/components/ui/monobank/monobank';
 import { Divider } from '@mantine/core';
+import { Chat } from '../chat/chat';
+
+import container from '@/styles/app/app.module.scss';
 
 interface IWishlistProps {
   wishlist: TWishlist;
@@ -42,15 +45,22 @@ export const Wishlist: React.FC<IWishlistProps> = async ({
 
   return (
     <WishlistProvider wishlist={wishlist!} isOwn={isOwnWishlist} items={items || []}>
-      <main className={styles.container}>
-        <NextIntlClientProvider messages={pick(messages, 'WishlistPage', 'Common')}>
-          <WishlistToolbar>
-            <Monobank url={wishlist.monobank_url} />
-          </WishlistToolbar>
-          <Divider my='md' />
-          <WishlistList />
-        </NextIntlClientProvider>
-      </main>
+      <div className={container.container}>
+        <section className={container.wishlistWrapper}>
+          <main className={styles.container}>
+            <NextIntlClientProvider messages={pick(messages, 'WishlistPage', 'Common')}>
+              <WishlistToolbar>
+                <Monobank url={wishlist.monobank_url} />
+              </WishlistToolbar>
+              <Divider my='md' />
+              <WishlistList />
+            </NextIntlClientProvider>
+          </main>
+        </section>
+        <section className={container.linksWrapper}>
+          <Chat listId={wishlist.id} profileId={wishlist.owner_id} />
+        </section>
+      </div>
     </WishlistProvider>
   );
 };
