@@ -1,8 +1,8 @@
 .container {
   display: flex;
   flex-direction: row;
-  gap: 16px;
-  padding: 12px;
+  gap: 12px;
+  padding: 8px;
   border-radius: var(--radius-md);
 
   background-color: var(--color-foreground);
@@ -10,6 +10,10 @@
 
   * {
     color: initial;
+  }
+
+  img {
+    aspect-ratio: 1;
   }
 }
 
@@ -19,7 +23,7 @@
   justify-content: flex-start;
   gap: 16px;
 
-  min-width: 240px;
+  min-width: max-content;
 
   @media screen and (max-width: 768px) {
     width: 100%;

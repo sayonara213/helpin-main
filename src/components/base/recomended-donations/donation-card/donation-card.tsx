@@ -1,30 +1,23 @@
 import React, { Suspense } from 'react';
 
-import { Database } from '@/lib/schema';
-import { TWishlist } from '@/types/database.types';
+import { IWishlistJoinProfile, TWishlist } from '@/types/database.types';
 import { Card, Group, Badge, Button, Text, CardSection, Flex } from '@mantine/core';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import Link from 'next/link';
 import { Avatar } from '@/components/ui/avatar/avatar';
 import { Monobank } from '@/components/ui/monobank/monobank';
-import { cookies } from 'next/headers';
-import { IconCalendar, IconMapPin } from '@tabler/icons-react';
+import { IconMapPin } from '@tabler/icons-react';
 import { ProfileTooltip } from '../../profile-tooltip/profile-tooltip';
 
 interface IDontaionCardProps {
-  donation: TWishlist;
+  donation: IWishlistJoinProfile;
 }
 
 export const DontaionCard: React.FC<IDontaionCardProps> = async ({ donation }) => {
-  const supabase = createServerComponentClient<Database>({ cookies });
+  const volunteer = donation.profiles;
 
-  const { data: volunteer } = await supabase
-    .from('profiles')
-    .select()
-    .eq('id', donation.owner_id)
-    .single();
-
-  if (!volunteer) return null;
+  if (!volunteer) {
+    return;
+  }
 
   return (
     <Card shadow='sm' padding='xs' radius='md' withBorder>
@@ -51,28 +44,34 @@ export const DontaionCard: React.FC<IDontaionCardProps> = async ({ donation }) =
         </Group>
       </CardSection>
 
-      <Text size='xl' w={500} mb={8}>
-        {donation.title}
-      </Text>
+      <Flex direction={'column'} justify={'space-between'} flex={1}>
+        <div>
+          <Text size='xl' w={500} my={8}>
+            {donation.title}
+          </Text>
 
-      <Text size='sm' c='dimmed' mb={8} lineClamp={2}>
-        {donation.description}
-      </Text>
+          <Text size='sm' c='dimmed' mb={8} lineClamp={2}>
+            {donation.description}
+          </Text>
+        </div>
 
-      <Suspense>
-        <Monobank url={donation.monobank_url} />
-      </Suspense>
+        <div>
+          <Suspense>
+            <Monobank url={donation.monobank_url} />
+          </Suspense>
 
-      <Button
-        variant='light'
-        fullWidth
-        mt='md'
-        radius='md'
-        component={Link}
-        href={`/wishlist/${donation.id}`}
-      >
-        Discover More
-      </Button>
+          <Button
+            variant='light'
+            fullWidth
+            mt='md'
+            radius='md'
+            component={Link}
+            href={`/wishlist/${donation.id}`}
+          >
+            Discover More
+          </Button>
+        </div>
+      </Flex>
     </Card>
   );
 };

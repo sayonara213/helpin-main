@@ -5,11 +5,11 @@ import { useTranslations, useMessages } from 'next-intl';
 import { SimpleGrid, Text } from '@mantine/core';
 
 import styles from './recomended-donations.module.scss';
-import { TWishlist } from '@/types/database.types';
+import { IWishlistJoinProfile } from '@/types/database.types';
 import { DontaionCard } from './donation-card/donation-card';
 
 interface IRecomendedDonationsProps {
-  donations: TWishlist[] | null;
+  donations: IWishlistJoinProfile[] | null;
 }
 
 export const RecomendedDonations: React.FC<IRecomendedDonationsProps> = ({ donations }) => {
@@ -20,7 +20,7 @@ export const RecomendedDonations: React.FC<IRecomendedDonationsProps> = ({ donat
     <div className={styles.wrapper}>
       <div className={styles.title}>
         <Text size='xxl' fw='bold'>
-          {t('wishlists.title')}
+          Активні збори
         </Text>
       </div>
       {donations && (

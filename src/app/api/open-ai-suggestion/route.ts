@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
     .eq('created_by', userId);
 
   const aiCompletion = await openai.chat.completions.create({
-    model: 'gpt-3.5-turbo-0125',
+    model: 'gpt-4-turbo-preview',
     response_format: { type: 'json_object' },
     messages: [
       {
@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
         , and current situation in the world. The JSON should be one object with fields for 'suggestedName', 
         'suggestedDescription (no more than 150 characters)', and 'confidenceScore' (0-1). Suggestion should be for real, 
         purchasable product that is acually needed regarding to the description: ${description}; and title: ${title} in ${new Date().getFullYear()}. Avoid abstract ideas and ensure 
-        the item is needed.`,
+        the item is needed, and will most likely help. ${suggestions?.length ? 'Here are the existing suggestions: ' + suggestions.map((s) => s.name).join(', ') : ''}`,
       },
       {
         role: 'user',
