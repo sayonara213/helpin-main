@@ -74,7 +74,7 @@ export const Chat: React.FC<IChatProps> = ({ listId, profileId }) => {
 
   return (
     isChat && (
-      <section className={container.linksWrapper}>
+      <section className={styles.wrapper}>
         <div className={styles.container}>
           <div className={styles.header}>
             <Flex gap={8} align={'center'} mb={12}>

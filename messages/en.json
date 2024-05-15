@@ -2,7 +2,7 @@
   "AuthPage": {
     "signIn": {
       "title": "Sign In",
-      "option": "New to Wishy? Join now"
+      "option": "New to Helpin? Join now"
     },
     "signUp": {
       "title": "Sign Up",
@@ -26,7 +26,7 @@
         },
         "birthday": {
           "label": "Date of Birth",
-          "description": "Let your friends know when to buy you a gift"
+          "description": "Let your other know when is your birthday"
         },
         "buttons": {
           "submit": "Finish",
@@ -134,8 +134,8 @@
   "WishlistPage": {
     "toolbar": {
       "delete": {
-        "title": "Delete wishlist",
-        "body": "Are you sure you want to delete this wishlist?",
+        "title": "Delete donation",
+        "body": "Are you sure you want to delete this donation?",
         "cancel": "Cancel",
         "delete": "Delete"
       },
@@ -159,17 +159,17 @@
       }
     },
     "add": {
-      "title": "Make a wish!",
+      "title": "Create an initiative!",
       "form": {
-        "title": "Add new wish",
+        "title": "Add new need",
         "fields": {
           "name": {
             "label": "Name",
-            "description": "Give your wish a name"
+            "description": "Give your need a name"
           },
           "description": {
             "label": "Description",
-            "description": "Here you can add some description of the item, let others know why you want it"
+            "description": "Here you can add some description of the item, let others know why you need it"
           },
           "price": {
             "label": "Price",
@@ -181,19 +181,19 @@
           },
           "image": {
             "label": "Image",
-            "description": "Wishy will try to set image automatically when you add a link",
+            "description": "Helpin will try to set image automatically when you add a link",
             "action": "Select image"
           },
           "save": {
-            "label": "Make a wish!"
+            "label": "Add!"
           }
         }
       }
     },
     "item": {
       "delete": {
-        "title": "Delete wish",
-        "description": "Are you sure you want to delete this wish?"
+        "title": "Delete item",
+        "description": "Are you sure you want to delete this item?"
       }
     },
     "suggestions": {
