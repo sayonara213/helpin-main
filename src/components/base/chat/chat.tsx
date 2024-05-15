@@ -27,13 +27,18 @@ export interface IMessage {
 const messagesMock = [
   {
     id: 1,
-    text: 'Hello',
+    text: 'Вітаю!',
     senderId: '10304b62-8547-464e-93f6-5da3f937c32e',
   },
   {
     id: 2,
-    text: 'I am 40 years ol man from somalia, sorry for my bad ingland',
+    text: 'Не будь байдужим, допоможи кому потрібно!',
     senderId: '10304b62-8547-464e-93f6-5da3f937c32e',
+  },
+  {
+    id: 3,
+    text: 'Дякую за ініціативу!',
+    senderId: 'a8c41ffb-e2d8-46e7-b0e4-bcf63413d02f',
   },
 ];
 

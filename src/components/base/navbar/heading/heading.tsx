@@ -30,7 +30,7 @@ export const Heading: React.FC<IHeadingProps> = ({ isExpanded, toggleNav }) => {
           {isExpanded && (
             <motion.div initial='hide' animate='show' exit='hide' variants={textVariants}>
               <Text size='xxl' fw='bold' c='white'>
-                Needin
+                Helpin
               </Text>
             </motion.div>
           )}
