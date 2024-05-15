@@ -6,9 +6,8 @@ import { Heading } from '../heading/heading';
 import { INavbarItem } from '../navbar';
 import { NavbarItem } from '../navbar-item/navbar-item';
 import { NavbarSignOut } from '../navbar-sign-out/navbar-sign-out';
-import { NavbarUsers } from '../navbar-users/navbar-users';
 import { ThemeSwitch } from '../theme-switch/theme-switch';
-import { IconBell, IconHome, IconUser, IconUsers } from '@tabler/icons-react';
+import { IconBell, IconHelp, IconHome, IconUser, IconUsers } from '@tabler/icons-react';
 import { LocaleSwitch } from '../locale-switch/locale-switch';
 import { useTranslations } from 'next-intl';
 
@@ -24,13 +23,7 @@ export const NavbarBody: React.FC<INavbarBodyProps> = ({ isExpanded, toggleNav, 
   const navbarItems: INavbarItem[] = [
     { name: t('home'), icon: <IconHome color='white' />, link: '/' },
     { name: t('profile'), icon: <IconUser color='white' />, link: '/profile' },
-    {
-      name: t('friends'),
-      icon: <IconUsers color='white' />,
-      children: <NavbarUsers closeNav={closeOnClick ? toggleNav : undefined} />,
-      onClick: toggleNav,
-    },
-    { name: t('notifications'), icon: <IconBell color='white' />, link: '/notifications' },
+    { name: t('help'), icon: <IconHelp color='white' />, link: '/help' },
   ];
 
   return (

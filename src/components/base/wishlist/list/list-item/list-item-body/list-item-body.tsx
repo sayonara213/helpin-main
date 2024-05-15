@@ -5,13 +5,13 @@ import Link from 'next/link';
 
 import styles from './list-item-body.module.scss';
 
-import { ShopLinkImage } from '@/components/base/shop-links/shop-links-item/shop-link-image/shop-link-image';
 import { CustomIcon } from '@/components/ui/icon/custom-icon';
 import { TWishlistItem } from '@/types/database.types';
 import { classes } from '@/utils/styles';
 
 import { Text } from '@mantine/core';
 import { AnimatePresence, motion } from 'framer-motion';
+import { ShopLinkImage } from '@/components/base/shop-links/shop-links-item/shop-link-image/shop-link-image';
 
 interface IListItemBodyProps {
   item: TWishlistItem;

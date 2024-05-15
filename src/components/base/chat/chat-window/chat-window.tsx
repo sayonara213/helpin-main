@@ -13,7 +13,7 @@ export const ChatWindow: React.FC<IChatWindowProps> = ({ messages }) => {
     <div className={styles.wrapper}>
       <div className={styles.window}>
         {messages.map((message) => (
-          <Message message={message} />
+          <Message message={message} key={message.id} />
         ))}
       </div>
     </div>

@@ -57,9 +57,7 @@ export const Wishlist: React.FC<IWishlistProps> = async ({
             </NextIntlClientProvider>
           </main>
         </section>
-        <section className={container.linksWrapper}>
-          <Chat listId={wishlist.id} profileId={wishlist.owner_id} />
-        </section>
+        <Chat listId={wishlist.id} profileId={wishlist.owner_id} />
       </div>
     </WishlistProvider>
   );

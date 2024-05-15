@@ -30,6 +30,12 @@ const nextConfig = {
         port: '',
         pathname: '/storage/v1/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'oaidalleapiprodscus.blob.core.windows.net',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };

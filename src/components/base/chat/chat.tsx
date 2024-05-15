@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 
 import styles from './chat.module.scss';
+import container from '@/styles/container.module.scss';
 import { TProfile } from '@/types/database.types';
 import { Avatar, Divider, Flex, Text } from '@mantine/core';
 import { ChatControls } from './chat-controls/chat-controls';
@@ -68,19 +69,21 @@ export const Chat: React.FC<IChatProps> = ({ listId, profileId }) => {
 
   return (
     isChat && (
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <Flex gap={8} align={'center'} mb={12}>
-            <Avatar src={profile?.avatar_url} size={32} />
+      <section className={container.linksWrapper}>
+        <div className={styles.container}>
+          <div className={styles.header}>
+            <Flex gap={8} align={'center'} mb={12}>
+              <Avatar src={profile?.avatar_url} size={32} />
 
-            <Text>{profile?.full_name}</Text>
-          </Flex>
-          <Divider />
+              <Text>{profile?.full_name}</Text>
+            </Flex>
+            <Divider />
+          </div>
+
+          <ChatWindow messages={messages} />
+          <ChatControls sendMessage={sendMessage} />
         </div>
-
-        <ChatWindow messages={messages} />
-        <ChatControls sendMessage={sendMessage} />
-      </div>
+      </section>
     )
   );
 };

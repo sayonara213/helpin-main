@@ -25,7 +25,7 @@ const Auth: React.FC<IAuthProps> = ({ isSignIn }) => {
       <div className={styles.logo}>
         <Logo />
         <Text size='50px' fw='bold'>
-          Wishy
+          Helpin
         </Text>
       </div>
       <div className={styles.container}>

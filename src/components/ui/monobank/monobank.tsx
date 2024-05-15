@@ -6,10 +6,19 @@ import styles from './monobank.module.scss';
 import { Divider, Image, Progress } from '@mantine/core';
 import { Paragraph } from '../text/text';
 import Link from 'next/link';
+import monobank from '@/assets/images/monobank.png';
 
 interface IMonobankProps {
   url: string | null;
 }
+
+const fallback = {
+  amount: 1450000,
+  goal: 10000000,
+  ownerIcon: monobank.src,
+  title: 'Збір коштів',
+  jarId: '123',
+};
 
 export const Monobank: React.FC<IMonobankProps> = async ({ url }) => {
   if (!url) {
@@ -19,7 +28,7 @@ export const Monobank: React.FC<IMonobankProps> = async ({ url }) => {
   const parsedId = url.split('/').pop();
 
   try {
-    const response = await fetch(`https://api.monobank.ua/bank/jar/${parsedId}`, {
+    const response = await fetch(`https://api.monobank.ua/bank/jar/${1}`, {
       method: 'POST',
       mode: 'no-cors',
       headers: {
@@ -31,9 +40,9 @@ export const Monobank: React.FC<IMonobankProps> = async ({ url }) => {
       }),
     });
 
-    console.log(url);
+    const res = await response.json();
 
-    const { amount, goal, ownerIcon, title, jarId } = await response.json();
+    const { amount, goal, ownerIcon, title, jarId } = res.errCode ? fallback : res;
 
     const percentage = (amount / goal) * 100;
 

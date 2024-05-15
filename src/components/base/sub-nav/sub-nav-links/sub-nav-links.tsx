@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import styles from './sub-nav-links.module.scss';
 
-import { Avatar } from '@/components/ui/avatar/avatar';
+import { Avatar } from '@mantine/core';
 import { TProfile } from '@/types/database.types';
 import { Paragraph } from '@/components/ui/text/text';
 import { Flex } from '@mantine/core';
@@ -27,7 +27,7 @@ export const SubNavLinks: React.FC<ISubNavLinksProps> = ({ profile }) => {
         </Paragraph>
       </Flex>
 
-      <Avatar src={profile.avatar_url!} size={36} />
+      <Avatar src={profile.avatar_url!} size={36} variant='outline' />
     </Link>
   );
 };

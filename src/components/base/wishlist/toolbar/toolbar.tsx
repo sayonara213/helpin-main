@@ -1,6 +1,6 @@
 'use client';
 
-import React, { PropsWithChildren, ReactNode, useCallback, useEffect, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 
 import { ToolbarDelete } from './toolbar-delete/toolbar-delete';
 import { ToolbarEdit } from './toolbar-edit/toolbar-edit';
@@ -17,8 +17,8 @@ import { TProfile } from '@/types/database.types';
 import { Skeleton, Spoiler, Text } from '@mantine/core';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { Paragraph } from '@/components/ui/text/text';
-import { Monobank } from '@/components/ui/monobank/monobank';
 import { ToolbarChat } from './toolbar-chat/toolbar-chat';
+import { ToolbarShare } from './toolbar-share/toolbar-share';
 
 interface IWishlistToolbarProps {
   children: React.ReactNode;
@@ -56,6 +56,7 @@ export const WishlistToolbar: React.FC<IWishlistToolbarProps> = ({ children }) =
       <ToolbarSort />
       {isOwnWishlist && <ToolbarEdit isEditing={isEditing} setIsEditing={setIsEditing} />}
       {isOwnWishlist && <ToolbarDelete />}
+      <ToolbarShare />
       <ToolbarChat />
     </>
   );

@@ -83,6 +83,57 @@ export type Database = {
         };
         Relationships: [];
       };
+      shares: {
+        Row: {
+          confidence_score: number;
+          created_at: string;
+          created_by: string;
+          description: string;
+          id: number;
+          image_url: string | null;
+          social: string;
+          title: string;
+          wishlist_id: number;
+        };
+        Insert: {
+          confidence_score: number;
+          created_at?: string;
+          created_by: string;
+          description?: string;
+          id?: number;
+          image_url?: string | null;
+          social?: string;
+          title?: string;
+          wishlist_id: number;
+        };
+        Update: {
+          confidence_score?: number;
+          created_at?: string;
+          created_by?: string;
+          description?: string;
+          id?: number;
+          image_url?: string | null;
+          social?: string;
+          title?: string;
+          wishlist_id?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'shares_created_by_fkey';
+            columns: ['created_by'];
+            isOneToOne: false;
+            referencedRelation: 'profiles';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'shares_wishlist_id_fkey';
+            columns: ['wishlist_id'];
+            isOneToOne: false;
+            referencedRelation: 'wishlists';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
       suggestions: {
         Row: {
           confidence_score: number;
@@ -137,7 +188,6 @@ export type Database = {
           created_at: string;
           description: string | null;
           id: number;
-          joint_with: string | null;
           location: string | null;
           monobank_url: string | null;
           owner_id: string;
@@ -149,7 +199,6 @@ export type Database = {
           created_at?: string;
           description?: string | null;
           id?: number;
-          joint_with?: string | null;
           location?: string | null;
           monobank_url?: string | null;
           owner_id: string;
@@ -161,7 +210,6 @@ export type Database = {
           created_at?: string;
           description?: string | null;
           id?: number;
-          joint_with?: string | null;
           location?: string | null;
           monobank_url?: string | null;
           owner_id?: string;
@@ -169,13 +217,6 @@ export type Database = {
           updated_at?: string;
         };
         Relationships: [
-          {
-            foreignKeyName: 'wishlists_joint_with_fkey';
-            columns: ['joint_with'];
-            isOneToOne: false;
-            referencedRelation: 'profiles';
-            referencedColumns: ['id'];
-          },
           {
             foreignKeyName: 'wishlists_owner_id_fkey';
             columns: ['owner_id'];

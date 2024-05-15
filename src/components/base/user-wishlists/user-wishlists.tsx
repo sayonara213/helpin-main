@@ -3,7 +3,7 @@ import React from 'react';
 import { WishlistsList } from './user-wishlists-list/user-wishlists-list';
 import styles from './user-wishlists.module.scss';
 
-import { ISharedWishlistJoinProfile, TWishlist } from '@/types/database.types';
+import { TWishlist } from '@/types/database.types';
 
 import { Text } from '@mantine/core';
 
