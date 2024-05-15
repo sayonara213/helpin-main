@@ -1,5 +1,6 @@
 .wrapper {
   margin-bottom: 12px;
+  padding: 12px;
 
   display: flex;
   justify-content: space-between;
@@ -8,8 +9,11 @@
   @media screen and (max-width: 576px) {
     flex-direction: column-reverse;
     align-items: center;
-    padding: 0;
   }
+
+  background-color: var(--color-foreground);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  box-shadow: var(--shadow-smooth);
 }
 
 .welcome {

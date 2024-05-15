@@ -10,7 +10,6 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { notFound } from 'next/navigation';
 import { Suggestions } from '@/components/base/suggestions/suggestions';
 import { SuggestionsLoading } from '@/components/pages/loading/wishlist/suggestions/suggestions-loading';
-import { Chat } from '@/components/base/chat/chat';
 
 const WishlistPage = async ({
   params,

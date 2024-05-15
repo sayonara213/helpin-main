@@ -22,15 +22,9 @@ import { useForm } from 'react-hook-form';
 import { useTranslations } from 'next-intl';
 import { getValidationLocalization } from '@/utils/form';
 
-const variants = {
-  open: { opacity: 1, height: 'auto' },
-  closed: { opacity: 0, height: 0 },
-};
-
 export const CreateWishlistForm = () => {
   const supabase = createClientComponentClient<Database>();
   const [isShared, setIsShared] = useState<boolean>(false);
-  const [profile, setProfile] = useState<TProfile | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { push } = useRouter();
   const user = useAuth();
@@ -69,15 +63,6 @@ export const CreateWishlistForm = () => {
     }
   };
 
-  const handleIsSharedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIsShared(e.target.checked);
-  };
-
-  const handleSetFriend = (friend: TProfile) => {
-    setValue('sharedWith', friend.id);
-    setProfile(friend);
-  };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <TextInput
@@ -97,64 +82,17 @@ export const CreateWishlistForm = () => {
       <TextInput
         {...register('monobankUrl')}
         placeholder={'https://api.monobank.ua/'}
-        label={'Моно банка'}
-        description={t('title.description')}
+        label={t('mono.label')}
+        description={t('mono.description')}
         error={translatedErrors['monobankUrl']}
       />
       <TextInput
         {...register('location')}
         placeholder={'м. Львів'}
-        label={'Локація'}
-        description={'Місце збору'}
+        label={t('location.label')}
+        description={t('location.description')}
         error={translatedErrors['monobankUrl']}
       />
-      <Switch label={t('shared.label')} onChange={handleIsSharedChange} checked={isShared} />
-      <div>
-        <AnimatePresence>
-          {isShared ? (
-            profile ? (
-              <motion.div
-                animate={'open'}
-                exit={'closed'}
-                initial={'closed'}
-                variants={variants}
-                key='friend-profile'
-              >
-                <Input.Wrapper label={t('shared.selected')}>
-                  <div className={styles.friend}>
-                    <div className={styles.section}>
-                      <Avatar src={profile.avatar_url} size={32} />
-                      <Text>{profile.full_name}</Text>
-                    </div>
-
-                    <Button onClick={() => setProfile(undefined)}>Remove</Button>
-                  </div>
-                </Input.Wrapper>
-              </motion.div>
-            ) : (
-              <motion.div
-                animate={'open'}
-                exit={'closed'}
-                initial={'closed'}
-                variants={variants}
-                key='wishlist-form'
-              >
-                <Input.Wrapper label={t('shared.action')} description={t('shared.description')}>
-                  <WishlistFormFriends onSelect={handleSetFriend} />
-                </Input.Wrapper>
-              </motion.div>
-            )
-          ) : (
-            <motion.div
-              animate={'open'}
-              exit={'closed'}
-              initial={'closed'}
-              variants={variants}
-              key='is-private'
-            ></motion.div>
-          )}
-        </AnimatePresence>
-      </div>
       <Button type='submit' fullWidth loading={isLoading} disabled={isLoading}>
         {t('submit.label')}
       </Button>

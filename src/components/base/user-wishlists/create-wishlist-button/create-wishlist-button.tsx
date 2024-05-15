@@ -18,7 +18,7 @@ export const CreateWishlistButton: React.FC<ICreateWishlistButtonProps> = ({ mod
     <>
       <ActionIcon
         variant='gradient'
-        gradient={{ from: '#7745e9', to: '#9a45e9', deg: 45 }}
+        gradient={{ from: '#32a060', to: '#349e7d', deg: 45 }}
         size='md'
         onClick={open}
       >

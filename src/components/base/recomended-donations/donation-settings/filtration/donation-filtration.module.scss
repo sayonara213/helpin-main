@@ -1,0 +1,106 @@
+.container {
+  display: flex;
+  flex-direction: column;
+
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  .description {
+    line-height: 1.2;
+
+    @media screen and (max-width: 992px) {
+      font-size: var(--size-small) !important;
+    }
+
+    @media screen and (max-width: 768px) {
+      max-width: 100%;
+    }
+  }
+}
+
+.wrapper {
+  width: 100%;
+  min-height: 36px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 14px;
+
+  .edit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+}
+
+.button {
+  all: unset;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  cursor: pointer;
+}
+
+.edit {
+  all: unset;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  width: 60px;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: var(--color-primary);
+  color: #ffffff;
+
+  path {
+    stroke: #ffffff;
+  }
+}
+
+.dropdown {
+  button {
+    padding: 5px 16px;
+    margin-bottom: 4px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.pair {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  p {
+    white-space: nowrap;
+  }
+}

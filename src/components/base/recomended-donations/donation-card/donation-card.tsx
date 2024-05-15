@@ -7,6 +7,7 @@ import { Avatar } from '@/components/ui/avatar/avatar';
 import { Monobank } from '@/components/ui/monobank/monobank';
 import { IconMapPin } from '@tabler/icons-react';
 import { ProfileTooltip } from '../../profile-tooltip/profile-tooltip';
+import { profile } from 'console';
 
 interface IDontaionCardProps {
   donation: IWishlistJoinProfile;
@@ -23,12 +24,15 @@ export const DontaionCard: React.FC<IDontaionCardProps> = async ({ donation }) =
     <Card shadow='sm' padding='xs' radius='md' withBorder>
       <CardSection>
         <Group justify='space-between' bg={'var(--color-background)'} p='xs'>
-          <Link href={`/user/${volunteer.id}`} style={{ textDecoration: 'none' }}>
+          <Link href={`/profile/${volunteer.id}`} style={{ textDecoration: 'none' }}>
             <ProfileTooltip profileId={volunteer.id}>
               <Group gap={12}>
                 <Avatar src={volunteer?.avatar_url} size={38} />
                 <Flex direction={'column'}>
-                  <Text fw={500}>{volunteer?.full_name}</Text>
+                  <Flex gap={8}>
+                    <Text fw={500}>{volunteer?.full_name}</Text>
+                    {volunteer.is_verified && <Text>⭐</Text>}
+                  </Flex>
                   <Flex gap={4}>
                     <IconMapPin color='var(--color-text-secondary)' size={20} />
                     <Text size='sm' c='dimmed'>

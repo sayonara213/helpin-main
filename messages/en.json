@@ -37,28 +37,26 @@
   },
   "HomePage": {
     "wishlists": {
-      "title": "My Wishlists"
+      "title": "Active initiatives"
     },
     "create": {
-      "title": "Create a Wishlist",
+      "title": "Create an initiative",
       "form": {
         "title": {
           "label": "Title",
-          "description": "Give your wishlist a title"
+          "description": "Give your initiative a title"
         },
         "description": {
           "label": "Description",
-          "description": "Give your wishlist a description"
+          "description": "Give your initiative a description"
         },
-        "shared": {
-          "label": "Is Shared",
-          "action": "Select friend",
-          "description": "Select a friend to share your wishlist with",
-          "placeholder": "Select a friend",
-          "selected": "Shared with:"
+        "mono": {
+          "label": "Monobank jar",
+          "description": "Enter mono jar url"
         },
-        "private": {
-          "label": "Is Private"
+        "location": {
+          "label": "Location",
+          "description": "Where will the initiative take place?"
         },
         "submit": {
           "label": "Create"
@@ -86,6 +84,7 @@
     "profile": "Profile",
     "friends": "Friends",
     "notifications": "Notifications",
+    "help": "Help",
     "signOut": "Sign Out",
     "localeSwitch": "Switch language",
     "themeSwitch": "Switch theme",
