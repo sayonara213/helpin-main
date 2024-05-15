@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Avatar } from '@/components/ui/avatar/avatar';
 import { Monobank } from '@/components/ui/monobank/monobank';
 import { IconMapPin } from '@tabler/icons-react';
-import { ProfileTooltip } from '../../profile-tooltip/profile-tooltip';
+import ProfileTooltip from '../../profile-tooltip/profile-tooltip';
 
 interface IDontaionCardProps {
   donation: IWishlistJoinProfile;

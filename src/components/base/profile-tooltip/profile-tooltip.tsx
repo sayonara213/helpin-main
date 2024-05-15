@@ -2,7 +2,6 @@
 
 import React, { memo, useCallback, useEffect, useState } from 'react';
 
-import styles from './profile-tooltip.module.scss';
 import { Avatar, Flex, HoverCard, Skeleton, Text } from '@mantine/core';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { Database } from '@/lib/schema';
@@ -14,7 +13,7 @@ interface IProfileTooltipProps {
   profileId: string;
 }
 
-export const ProfileTooltip: React.FC<IProfileTooltipProps> = memo(({ children, profileId }) => {
+const ProfileTooltip: React.FC<IProfileTooltipProps> = ({ children, profileId }) => {
   const [profile, setProfile] = useState<TProfile | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -72,7 +71,9 @@ export const ProfileTooltip: React.FC<IProfileTooltipProps> = memo(({ children, 
       </HoverCard.Dropdown>
     </HoverCard>
   );
-});
+};
+
+export default memo(ProfileTooltip);
 
 const TooltipSkeleton = () => (
   <HoverCard.Dropdown>
