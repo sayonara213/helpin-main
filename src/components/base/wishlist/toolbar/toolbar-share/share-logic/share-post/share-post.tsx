@@ -87,11 +87,16 @@ export const SharePost: React.FC<ISharePostProps> = ({ social }) => {
           <IconRefresh size={20} />
         </ActionIcon>
       </div>
-      <Image src={post?.image_url!} width={200} height={200} alt='image' />
-      <Text size='md'>{post?.title}</Text>
-      <Text size='sm' c={'dimmed'}>
-        {post?.description}
-      </Text>
+      {post && (
+        <>
+          <Image src={post?.image_url!} width={200} height={200} alt='image' />
+          <Text size='md'>{post?.title}</Text>
+          <Text size='sm' c={'dimmed'}>
+            {post?.description}
+          </Text>
+        </>
+      )}
+
       <Button onClick={createPost} fullWidth loading={isCreating} disabled={isCreating}>
         Create
       </Button>

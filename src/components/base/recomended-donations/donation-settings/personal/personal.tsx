@@ -1,9 +1,10 @@
 'use client';
 
-import { ActionIcon } from '@mantine/core';
+import { ActionIcon, Tooltip } from '@mantine/core';
 import { IconLock, IconSortAscending, IconStar } from '@tabler/icons-react';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import styles from '@/styles/glow.module.scss';
 
 export const FilterPersonal = () => {
   const [personal, setPersonal] = useState(false);
@@ -43,12 +44,15 @@ export const FilterPersonal = () => {
   }, []);
 
   return (
-    <ActionIcon
-      variant='gradient'
-      gradient={{ from: personal ? '#49268a' : '#453781', to: personal ? '#11aaaa' : '#2d5c7f' }}
-      onClick={handleSwitch}
-    >
-      <IconLock size={20} color='white' />
-    </ActionIcon>
+    <Tooltip label='Мої збори'>
+      <ActionIcon
+        variant='gradient'
+        gradient={{ from: personal ? '#26428a' : '#373881', to: personal ? '#11aaaa' : '#2d5c7f' }}
+        onClick={handleSwitch}
+        className={personal ? styles.glowBlue : ''}
+      >
+        <IconLock size={20} color='white' />
+      </ActionIcon>
+    </Tooltip>
   );
 };

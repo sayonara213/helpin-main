@@ -1,9 +1,11 @@
 'use client';
 
-import { ActionIcon } from '@mantine/core';
+import { ActionIcon, Tooltip } from '@mantine/core';
 import { IconSortAscending, IconStar } from '@tabler/icons-react';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+
+import styles from '@/styles/glow.module.scss';
 
 export const DonationVerified = () => {
   const [verified, setVerified] = useState(false);
@@ -42,12 +44,18 @@ export const DonationVerified = () => {
   }, []);
 
   return (
-    <ActionIcon
-      variant='gradient'
-      gradient={{ from: verified ? '#c6bb26' : '#969257', to: verified ? '#b3901d' : '#aa8f5e' }}
-      onClick={handleSwitch}
-    >
-      <IconStar size={20} color='white' />
-    </ActionIcon>
+    <Tooltip label='Верифіковані волонтери'>
+      <ActionIcon
+        variant='gradient'
+        gradient={{
+          from: verified ? '#c6bb26' : '#969257',
+          to: verified ? '#b3901d' : '#aa8f5e',
+        }}
+        onClick={handleSwitch}
+        className={verified ? styles.glowYellow : ''}
+      >
+        <IconStar size={20} color='white' />
+      </ActionIcon>
+    </Tooltip>
   );
 };

@@ -10,6 +10,6 @@ const Help = async () => {
   return <HelpPage locale={locale} />;
 };
 
-export const dynamic = 'force-dynamc';
+export const dynamic = 'force-dynamic';
 
 export default Help;

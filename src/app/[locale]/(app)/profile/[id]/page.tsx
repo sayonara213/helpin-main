@@ -4,7 +4,6 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import ProfileInfo from '@/components/base/user-profile/profile-info/profile-info';
-import { ProfileSharedWishlists } from '@/components/base/user-profile/profile-shared-wishlists/profile-shared-wishlists';
 import ProfileWishlists from '@/components/base/user-profile/profile-wishlists/profile-wishlists';
 import { Database } from '@/lib/schema';
 import styles from '@/styles/pages/pages.module.scss';
@@ -32,7 +31,6 @@ const ProfileByIdPage = async ({ params }: { params: { id: string } }) => {
     <div className={styles.grid}>
       <ProfileInfo profile={profile} />
       <ProfileWishlists profile={profile} />
-      <ProfileSharedWishlists profileId={profile.id} />
     </div>
   );
 };

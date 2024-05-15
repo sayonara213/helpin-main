@@ -28,7 +28,7 @@ export const Monobank: React.FC<IMonobankProps> = async ({ url }) => {
   const parsedId = url.split('/').pop();
 
   try {
-    const response = await fetch(`https://api.monobank.ua/bank/jar/${parsedId}`, {
+    const response = await fetch(`https://api.monobank.ua/bank/jar/${1}`, {
       method: 'POST',
       mode: 'no-cors',
       headers: {

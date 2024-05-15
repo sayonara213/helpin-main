@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, Modal } from '@mantine/core';
+import { ActionIcon, Modal, Tooltip } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconPlus } from '@tabler/icons-react';
 import React from 'react';
@@ -16,14 +16,16 @@ export const CreateWishlistButton: React.FC<ICreateWishlistButtonProps> = ({ mod
 
   return (
     <>
-      <ActionIcon
-        variant='gradient'
-        gradient={{ from: '#32a060', to: '#349e7d', deg: 45 }}
-        size='md'
-        onClick={open}
-      >
-        <IconPlus />
-      </ActionIcon>
+      <Tooltip label='Створити збір'>
+        <ActionIcon
+          variant='gradient'
+          gradient={{ from: '#32a060', to: '#349e7d', deg: 45 }}
+          size='md'
+          onClick={open}
+        >
+          <IconPlus />
+        </ActionIcon>
+      </Tooltip>
       <Modal
         opened={opened}
         onClose={close}

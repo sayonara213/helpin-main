@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { useSharedWishlist } from '@/components/base/provider/shared-wishlist-provider';
 import { useWishlist } from '@/components/base/provider/wishlist-provider';
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
@@ -15,7 +14,6 @@ interface IToolbarEditProps {
 export const ToolbarEdit: React.FC<IToolbarEditProps> = ({ isEditing, setIsEditing }) => {
   const supabase = createClientComponentClient();
   const { items, orderChanged, setOrderChanged } = useWishlist();
-  const { setIsEditing: sharedSetIsEditing, isEditing: sharedIsEditing } = useSharedWishlist();
 
   const handleReorder = async () => {
     try {
@@ -32,7 +30,6 @@ export const ToolbarEdit: React.FC<IToolbarEditProps> = ({ isEditing, setIsEditi
     }
 
     setIsEditing(!isEditing);
-    sharedSetIsEditing(!sharedIsEditing);
   };
 
   return (

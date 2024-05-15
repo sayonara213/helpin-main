@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 
 import styles from '../toolbar.module.scss';
 
-import { useSharedWishlist } from '@/components/base/provider/shared-wishlist-provider';
 import { useWishlist } from '@/components/base/provider/wishlist-provider';
 import { ConfirmModal } from '@/components/ui/confirm-modal/confirm-modal';
 import { Database } from '@/lib/schema';
@@ -18,7 +17,6 @@ import { useTranslations } from 'next-intl';
 
 export const ToolbarDelete = () => {
   const { wishlist } = useWishlist();
-  const { sharedWishlist } = useSharedWishlist();
   const t = useTranslations('WishlistPage.toolbar');
   const commonT = useTranslations('Common');
 
@@ -28,9 +26,7 @@ export const ToolbarDelete = () => {
   const supabase = createClientComponentClient<Database>();
 
   const handleDeleteWishlist = async () => {
-    const { error } = wishlist.is_shared
-      ? await supabase.from('shared_wishlists').delete().eq('id', sharedWishlist.id)
-      : await supabase.from('wishlists').delete().eq('id', wishlist.id);
+    const { error } = await supabase.from('wishlists').delete().eq('id', wishlist.id);
     if (error) {
       notify('error', commonT('errors.default'));
       return;

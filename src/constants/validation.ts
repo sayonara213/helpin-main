@@ -60,7 +60,7 @@ export const wishlistItemSchema = yup.object({
 });
 
 export const wishlistSchema = yup.object({
-  title: yup.string().required().min(3).max(15),
+  title: yup.string().required().min(3).max(30),
   description: yup.string().optional(),
   sharedWith: yup.string().optional(),
   monobankUrl: yup.string().url().optional(),

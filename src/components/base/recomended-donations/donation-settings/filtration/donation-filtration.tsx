@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 
 import styles from './donation-filtration.module.scss';
 
-import { ActionIcon, Menu, MenuDropdown, MenuItem, Text } from '@mantine/core';
+import { ActionIcon, Menu, MenuDropdown, MenuItem, Text, Tooltip } from '@mantine/core';
 import {
   IconCalendar,
   IconSortAscending,
@@ -69,9 +69,11 @@ export const DonationFiltration: React.FC = () => {
   return (
     <Menu transitionProps={{ transition: 'rotate-right', duration: 150 }}>
       <Menu.Target>
-        <ActionIcon variant='gradient' gradient={{ from: '#6a00ff', to: '#ae00ff' }}>
-          <IconSortAscending size={20} />
-        </ActionIcon>
+        <Tooltip label='Сортування'>
+          <ActionIcon variant='gradient' gradient={{ from: '#6a00ff', to: '#ae00ff' }}>
+            <IconSortAscending size={20} />
+          </ActionIcon>
+        </Tooltip>
       </Menu.Target>
       <MenuDropdown className={styles.dropdown}>
         <Menu.Label>{t('sortBy.title')}</Menu.Label>

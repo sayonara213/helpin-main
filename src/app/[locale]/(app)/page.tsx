@@ -74,6 +74,6 @@ const App = async ({ searchParams }: IAppProps) => {
   );
 };
 
-export const dynamic = 'force-dynamc';
+export const dynamic = 'force-dynamic';
 
 export default App;

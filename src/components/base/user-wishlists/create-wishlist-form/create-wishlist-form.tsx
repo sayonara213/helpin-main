@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import styles from './create-wishlist-form.module.scss';
-import { WishlistFormFriends } from './friends/wishlist-form-friends';
 
 import { useAuth } from '../../provider/auth-provider';
 
